@@ -1,10 +1,10 @@
 # Data_processing_app
 APIデータをブラウザに表示させるアプリです。
 
-#DEMO
+# DEMO
 
 
-#Featue
+# Featue
 機械学習、深層学習に必要とされるpandasとmatplotlibのライブラリを使用しています
 
 Requirement
