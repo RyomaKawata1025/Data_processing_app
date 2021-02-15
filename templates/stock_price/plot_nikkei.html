@@ -1,0 +1,56 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="content-language" content="ja">
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="{% static 'js/jquery-3.3.1min.js' %}"></script>
+        <title>タイトル</title>
+    </head>
+<body>
+<div id="graph">
+
+</div>
+
+<script>
+      $(function() {
+        $('#button').click(
+          function() {
+            $.ajax({
+              url: '{% static 'tmp/test.html' %}',
+              dataType: 'html',
+              type:'GET',
+              success: function(datas) {   //furnctionの引数名は何でもいい
+                alert("2000-01-01~2005-01-01");
+                $('#text').html(datas);
+              },
+              error: function(data) {
+                alert('error');
+              }
+             });
+          }
+        );
+      });
+    </script>
+    <input type="button" id="button" value="button"/>
+    <br/>
+    <div id="text">
+        <ul></ul>
+    </div>
+<center>
+<h1>日経225</h1>
+{% csrf_token %}
+    <img src="{% static 'tmp/SVGtest.svg' %}" alt="">
+    <h3><a href="http://127.0.0.1:8000/plot_nikkei/">日経225始値グラフ</a></h3>
+<table border="1">
+</table>
+<tbody align="center">
+    <tr>
+        <td>{{ data_processing | safe  }}</td>
+    </tr>
+</tbody>
+</table>
+</center>
+</body>
+</html>

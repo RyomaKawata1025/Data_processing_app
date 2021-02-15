@@ -1,0 +1,21 @@
+div.table-width{
+    width:80%;
+}
+
+th {
+text-align: center;
+vertical-align: top;
+}
+
+td {
+text-align: center;
+vertical-align: top;
+}
+
+input {
+    margin:10px;
+}
+
+h1 {
+    font-size:50px
+}

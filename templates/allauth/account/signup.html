@@ -1,0 +1,36 @@
+
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
+<body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+{% block content %}
+<div class="form-wrapper">
+  <h1>登録画面</h1>
+  <form action="{% url 'account_signup' %}" method="POST">
+    <div class="form-item">
+                {{ form.username }}
+                <hr>
+                {{ form.email }}
+                <hr>
+                {{ form.password1 }}
+                <hr>
+                {{ form.password2 }}
+
+                <div class="button-panel">
+                <button type="submit" class="button" >登録</button>
+                </div>
+                <input type="hidden" name="{{ redirect_field_name }}" value='/stock_price/plot_comparison' />
+                {% csrf_token %}
+    </div>
+</form>
+</div>
+{% endblock %}
+</body>
+
+
+

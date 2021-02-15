@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ListViewサンプル</title>
+</head>
+
+<body>
+<h1>OK</h1>
+<h3>{{ foo }}</h3>
+
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>High</th>
+            <th>Close</th>
+        </tr>
+        {% for book in object_list %}
+        <tr>
+            <td>{{ book.date }}</td>
+            <td>{{ book.high }}</td>
+            <td>{{ book.close }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>

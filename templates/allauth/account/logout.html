@@ -1,0 +1,30 @@
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
+<body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/logout.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<center>
+{% block content %}
+<div class="form-wrapper">
+  <div class="logout-form">
+<p>ログアウトしてもよろしいですか？</p>
+
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <div class="button-panel">
+  <button type="submit" class="button">{% trans 'ログアウト' %}</button>
+  </div>
+</form>
+</div>
+</div>
+{% endblock %}
+</center>
+</body>
+
+

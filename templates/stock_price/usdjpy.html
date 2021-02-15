@@ -1,0 +1,73 @@
+{% extends "stock_price/base.html" %}
+{% load static %}
+{% block content %}
+<body>
+<div class="jumbotron">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/stock_price.css' %}" rel="stylesheet">
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">
+    <a href="http://127.0.0.1:8000/stock_price/nikkei/">日経225</a>
+  </li>
+  <li class="list-group-item">
+    <a href="http://127.0.0.1:8000/stock_price/sp500/">S&P500</a>
+  </li>
+  <li class="list-group-item">
+    <a href="http://127.0.0.1:8000/stock_price/usdjpy/">USD/JPY</a>
+  </li>
+  <li class="list-group-item">
+    <a href="http://127.0.0.1:8000/stock_price/bitcoin/">BitCoin</a>
+  </li>
+  <li class="list-group-item">
+    <a href="http://127.0.0.1:8000/stock_price/plot_comparison/">全通貨終値比較</a>
+  </li>
+</ul>
+<center>
+<h1 class="display-4">USD/JPY</h1>
+
+<img src="{% static 'tmp/usdjpy_image.png' %}" alt="">
+
+    <p><font color="red">{{msg}}</font></p>
+
+<div class="search-form">
+<table>
+    <form action="{% url 'usdjpy' %}" method="post">
+        {% csrf_token %}
+        <td>{{ form_start }}</td>
+        <td>{{ form_end }}</td>
+        <td><tr><td></td><td><input type="submit" value="検索" class="btn btn-primary"></td></tr></td>
+    </form>
+</table>
+</div>
+<div class="table-width">
+<table class="table table-hover" bgcolor="#ffffff">
+            <thead>
+            <tr class="table-secondary">
+                <th>ID</th>
+                <th>日付</th>
+                <th>高値</th>
+                <th>低値</th>
+                <th>始値</th>
+                <th>終値</th>
+                <th>出来高</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in record %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.date }}</td>
+                <td>{{ row.high }}</td>
+                <td>{{ row.low }}</td>
+                <td>{{ row.open }}</td>
+                <td>{{ row.close }}</td>
+                <td>{{ row.volume }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+</div>
+</center>
+</div>
+</body>
+{% endblock %}
