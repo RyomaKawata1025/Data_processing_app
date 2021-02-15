@@ -61,7 +61,7 @@ virtualenv==20.3.1
 virtualenv-clone==0.5.4
 
 # Install
-pip install requirements.txt
+pip install -r requirements.txt
 # Usage
 git clone https://github.com/RyomaKawata1025/Data_processing_app
 cd Data_processing_app
